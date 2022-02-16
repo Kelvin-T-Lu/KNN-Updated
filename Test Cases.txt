@@ -1,0 +1,32 @@
+Test Cases
+
+
+Testing - Stemmer
+	Accuracy - 77.1% Lemmatizer  k = 51 features = 10K
+
+	Accuracy - 77.7% Lancaster  k = 51 features = 10K 
+	
+	Accuracy - 79.2% Snow k = 51 features = 10k max_df = 0.85
+	
+	Accuracy - 79.2% Porter k = 51 features = 10K 
+
+Testing - Max-DF 
+
+	Accuracy - 0.4972 Features = 10K max_df = 1
+
+	Accuracy - 79.2% Snow k = 51 features = 10k max_df = 0.85
+
+	Accruacy 79.25% Snow k = 51 features = 10k max_df = 0.70
+
+
+Testing - Features
+
+	Accuracy - 79.2% Snow k = 51 features = 15k max_df = 0.70
+	Accuracy - 79.2% Snow k = 51 features = 15k max_df = 0.80
+	Accuracy - 79.2% Snow k = 51 features = 10k max_df = 0.85
+	Accuracy - 79.0% Snow k = 51 features = 5k max_df = 0.85
+	Accuracy - 77.6% Snow k = 51 features = 2500 max_df = 0.85
+	Accuracy - 76.28% Snow k = 51 features = 1K max_df = 0.85
+	Accuracy - 75.4% Snow k = 51 features = 500 max_df = 0.85
+
+
