@@ -1,27 +1,32 @@
 # Author: Kelvin Lu
 # HW1: KNN Classifer Project
 
+# Data Storage Packages
+import pandas as pd # Data Storage 
 import numpy as np
-import pandas as pd
+
+# Vectorization, Classification, and Distance Calculations
 from sklearn.feature_extraction.text import TfidfVectorizer
-from scipy.spatial import distance_matrix
-from scipy.spatial.distance import cdist
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics.pairwise import euclidean_distances
-from sklearn.model_selection import cross_val_score
-from sklearn.neighbors import KNeighborsClassifier 
+from math import floor 
+from math import sqrt 
 
+# Preprocessing Packages 
 import nltk
 import re
 import string 
-import math
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
 from nltk.stem import WordNetLemmatizer
+
+# Testing packages 
 import time
+from sklearn.model_selection import cross_val_score
+from sklearn.neighbors import KNeighborsClassifier 
 from statistics import mode
 import matplotlib.pyplot as plt
 
