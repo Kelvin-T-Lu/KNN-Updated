@@ -22,6 +22,7 @@ from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
 from nltk.stem import WordNetLemmatizer
+import unidecode 
 
 # Testing packages 
 import time
@@ -56,21 +57,28 @@ def preprocess_helper(text):
         Return text.
     """
 
+    # Replace instances with spaces, to allow for word seperation. 
     # Lower case Text
     # Remove HTML Text
     # Remove Websites
     # Remove Numbers
     # Remove tabs
     # Replace punctuation with white space
+    # Replace accented letters
     # Remove extra spaces. 
     
-    text = re.sub(r'<[^<>]*>', '', text).lower()
-    text = re.sub(r'\S+\.com[^ ]*', '', text)
-    text = re.sub(r'\S+\.net[^ ]*', '', text)
-    text = text.translate(text.maketrans('', '', string.digits))
+    text = re.sub(r'<[^<>]*>', ' ', text).lower()
+    text = re.sub(r'\S+\.com[^ ]*', ' ', text)
+    text = re.sub(r'\S+\.net[^ ]*', ' ', text)
+    text = re.sub(r'\d+', ' ', text)
+    # text = text.translate(text.maketrans('', '', string.digits))
     text = re.sub('\t', '', text)
     text = re.sub(r'[^\w\s]', ' ', text)
+    text = unidecode.unidecode(text)
+
+
     text = re.sub(' +', ' ', text).strip()
+
   
     return text
 
@@ -176,7 +184,7 @@ def write_helper(num):
 def run_K(train_data, training_vectors, test_tfidf):
     # k_neighbors = 10
     # k_neighbors = math.floor(math.sqrt(train_data.shape[0]))
-    k_neighbors = 91
+    k_neighbors = 95
     if(k_neighbors % 2 == 0):
         k_neighbors = k_neighbors + 1 
 
@@ -190,7 +198,7 @@ def run_K(train_data, training_vectors, test_tfidf):
     # print(test_data.head())
 
 def k_tests(training_vectors, train_data):
-    k_range = range(77,99,2)
+    k_range = range(91,103,2)
     # k_range = [3,25,51,75,101,123]
     print('Running tests ... ')
     # k_range = [51]
@@ -229,7 +237,7 @@ def main():
 
     print('Proprocessing ...')
     train_data['Reviews'] = train_data['Reviews'].apply(lambda x: preprocess_helper(x))
-    # test_data['Reviews'] = test_data['Reviews'].apply(lambda x: preprocess_helper(x))
+    test_data['Reviews'] = test_data['Reviews'].apply(lambda x: preprocess_helper(x))
 
     # print(train_data.head(50))
 
